@@ -1,0 +1,10 @@
+{
+  "commands.randomizer.loot.enable": "Enabled loot randomization",
+  "commands.randomizer.loot.disable": "Disabled loot randomization",
+  "commands.randomizer.loot.seed": "Set loot randomization seed to %s",
+  "commands.randomizer.loot.query": "Loot randomization %s, seed %s",
+  "commands.randomizer.recipe.enable": "Enabled recipe randomization",
+  "commands.randomizer.recipe.disable": "Disabled recipe randomization",
+  "commands.randomizer.recipe.seed": "Set recipe randomization seed to %s",
+  "commands.randomizer.recipe.query": "Recipe randomization %s, seed %s"
+}

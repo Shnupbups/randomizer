@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.shnupbups.randomizer.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "AbstractCookingRecipeMixin", "CuttingRecipeMixin", "LootManagerMixin", "RecipeManagerMixin", "ShapedRecipeMixin",
+    "ShapelessRecipeMixin", "SmithingRecipeMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

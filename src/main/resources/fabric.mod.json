@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "randomizer",
+  "version": "1.0.0",
+
+  "name": "Randomizer",
+  "description": "Easily randomize crafting recipes and loot tables!",
+  "authors": [
+    "Shnupbups"
+  ],
+
+  "license": "LGPLv3",
+  "icon": "assets/randomizer/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.shnupbups.randomizer.Randomizer"
+    ]
+  },
+  "mixins": ["randomizer.mixins.json"],
+
+  "depends": {
+    "fabricloader": ">=0.6.1",
+    "fabric": "*"
+  }
+}
