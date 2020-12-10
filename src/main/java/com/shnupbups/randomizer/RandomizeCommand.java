@@ -39,33 +39,6 @@ public class RandomizeCommand {
 			Randomizer.setLootSeed(serverCommandSource.getMinecraftServer(), seed);
 			serverCommandSource.sendFeedback(new TranslatableText("commands.randomizer.loot.seed", seed), true);
 			return 1;
-		})))).then(CommandManager.literal("recipe").executes((commandContext) -> {
-			ServerCommandSource serverCommandSource = commandContext.getSource();
-			int seed =  new Random().nextInt();
-			Randomizer.setRecipeSeed(serverCommandSource.getMinecraftServer(), seed);
-			serverCommandSource.sendFeedback(new TranslatableText("commands.randomizer.recipe.seed", seed), true);
-			return 1;
-		}).then(CommandManager.literal("disable").executes((commandContext) -> {
-			ServerCommandSource serverCommandSource = commandContext.getSource();
-			Randomizer.setRecipeEnabled(serverCommandSource.getMinecraftServer(), false);
-			serverCommandSource.sendFeedback(new TranslatableText("commands.randomizer.recipe.disable"), true);
-			return 1;
-		})).then(CommandManager.literal("enable").executes((commandContext) -> {
-			ServerCommandSource serverCommandSource = commandContext.getSource();
-			Randomizer.setRecipeEnabled(serverCommandSource.getMinecraftServer(), true);
-			serverCommandSource.sendFeedback(new TranslatableText("commands.randomizer.recipe.enable"), true);
-			return 1;
-		})).then(CommandManager.literal("query").executes((commandContext) -> {
-			ServerCommandSource serverCommandSource = commandContext.getSource();
-			RandomizerState randomizer = Randomizer.getRandomizer(serverCommandSource.getMinecraftServer());
-			serverCommandSource.sendFeedback(new TranslatableText("commands.randomizer.recipe.query", randomizer.isRecipeRandomizerEnabled(), randomizer.getRecipeSeed()), false);
-			return 1;
-		})).then(CommandManager.literal("seed").then(CommandManager.argument("seed", StringArgumentType.string()).executes((commandContext) -> {
-			ServerCommandSource serverCommandSource = commandContext.getSource();
-			int seed = commandContext.getArgument("seed", String.class).hashCode();
-			Randomizer.setRecipeSeed(serverCommandSource.getMinecraftServer(), seed);
-			serverCommandSource.sendFeedback(new TranslatableText("commands.randomizer.recipe.seed", seed), true);
-			return 1;
 		})))));
 	}
 }

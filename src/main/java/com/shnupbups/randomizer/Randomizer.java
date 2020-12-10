@@ -23,18 +23,14 @@ public class Randomizer implements ModInitializer {
 
 	public static MinecraftServer server;
 	
-	public static Map<RandomizableRecipe, RandomizableRecipe> randomizedRecipes = ImmutableMap.of();
-	
 	@Override
 	public void onInitialize() {
 		ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((server, resourceManager, success) -> {
 			refreshLoot(server);
-			refreshRecipe(server);
 		});
 		ServerLifecycleEvents.SERVER_STARTED.register((server) -> {
 			Randomizer.server = server;
 			refreshLoot(server);
-			refreshRecipe(server);
 		});
 		CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> RandomizeCommand.register(dispatcher));
 	}
@@ -58,28 +54,6 @@ public class Randomizer implements ModInitializer {
 			((LootRandomizer)server.getLootManager()).randomize(new Random(randomizer.getLootSeed()));
 		} else {
 			((LootRandomizer)server.getLootManager()).reset();
-		}
-	}
-
-	public static void setRecipeSeed(MinecraftServer server, int seed) {
-		RandomizerState randomizer = getRandomizer(server);
-		randomizer.setRecipeRandomizerEnabled(true);
-		randomizer.setRecipeSeed(seed);
-		refreshRecipe(server);
-	}
-
-	public static void setRecipeEnabled(MinecraftServer server, boolean enabled) {
-		RandomizerState randomizer = getRandomizer(server);
-		randomizer.setRecipeRandomizerEnabled(enabled);
-		refreshRecipe(server);
-	}
-
-	public static void refreshRecipe(MinecraftServer server) {
-		RandomizerState randomizer = getRandomizer(server);
-		if(randomizer.isRecipeRandomizerEnabled()) {
-			((RecipeRandomizer)server.getRecipeManager()).randomize(new Random(randomizer.getRecipeSeed()));
-		} else {
-			((RecipeRandomizer)server.getRecipeManager()).reset();
 		}
 	}
 
